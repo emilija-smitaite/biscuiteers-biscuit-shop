@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <div class="image-container my-5">
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        {% else %}
+                        <a href="">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        </a>
+                        {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-details-container mb-5 mt-md-5">
+                    <p class="mb-0">{{ product.name }}</p>
+                    <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                    <p class="mt-3">{{ product.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
+                <div class="product-details-container">  
+                    <p><img id="rolling-image" class="card-img-top img-fluid" src="/media/detail-rolling-pin.png" alt="rolling-pin"></p>
+                    <p>{{ product.ingredients }}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
+                <div class="product-details-container">  
+                    <p><img id="mit-image" class="card-img-top img-fluid" src="/media/oven-mit.png" alt="rolling-pin"></p>
+                    <p>Best kept in a cool, dry place</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
+                <div class="product-details-container">  
+                    <p><img id="crumble-image" class="card-img-top img-fluid" src="/media/crumble.png" alt="rolling-pin"></p>
+                    <p>Fresh for at least 3 months on arrival</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <!--<div id="detail" class="row">
+            <hr>
+            <div class="col-8 offset-lg-2">
+                <p><img id="detail-image" class="card-img-top img-fluid" src="/media/detail-rolling-pin.png" alt="{{ product.name }}"></p>
+            </div>
+            
+        </div>
+        <div id="detail" class="row">
+            <hr>
+            <div class="col-8 offset-lg-2 text-center">
+                <p>{{ product.ingredients }}</p>
+                
+            </div>
+            
+        </div>-->
+    </div>
+
+{% endblock %}
