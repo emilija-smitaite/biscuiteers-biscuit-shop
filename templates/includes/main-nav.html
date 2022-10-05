@@ -1,7 +1,8 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Shop Biscuits
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
@@ -10,38 +11,22 @@
                 <a href="{% url 'products' %}?category=birthdays" class="dropdown-item ">Birthdays</a>
                 <a href="{% url 'products' %}?category=i_love_you" class="dropdown-item ">I Love You Gifts</a>
                 <a href="{% url 'products' %}?category=school" class="dropdown-item ">School/Thank You</a>
-                <a href="{% url 'products' %}?category=halloween,christmas,birthdays,school,i_love_you" class="dropdown-item">All Biscuits</a>
+                <a href="{% url 'products' %}?category=halloween,christmas,birthdays,school,i_love_you"
+                    class="dropdown-item">All Biscuits</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="">
                 Classes
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Category</a>
-                <a href="" class="dropdown-item">Category</a>
-                <a href="" class="dropdown-item">Category</a>
-                <a href="" class="dropdown-item">Category</a>
-            </div>
+
         </li>
 
         <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'blog' %}" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'blog' %}">
                 Blog
             </a>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                About &amp; Sustainability
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">Category</a>
-                <a href="" class="dropdown-item">Category</a>
-                <a href="" class="dropdown-item">Category</a>
-                <a href="" class="dropdown-item">Category</a>
-            </div>
         </li>
     </ul>
 </div>
