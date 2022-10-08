@@ -1,108 +1,191 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The Biscuiteers Biscuit Shop
+[View the live project here.](https://biscuiteers-biscuit-shop.herokuapp.com/)
 
-Welcome emilija-smitaite,
+Biscuiteers is an e-commerce site offering hand iced artisan biscuit gifts.
+Users are also benefit from a blog with comment functionality.
+The site is fully responsive and was built using the Django framework in Python.
+The payment system is called Stripe, it is set up in a 'dummy' mode and will not accept real card details.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+![Mock up](media/mockup.png)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+# User Experience (UX)
+### User Stories
 
-## Gitpod Reminders
+- #### Navigation
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+  - As a user, I want to navigate round the site easily to locate the products I want.
+  - As a user, I want to view a list of all available products.
+  - As a user, I want to be able to view more details on a product.
+  - As a user, I want to be able to refine my search with categories.
+  - As a user, I want to be able to see all ingredients contained within the product, including any allergens.
 
-`python3 -m http.server`
+- #### Accounts
 
-A blue button should appear to click: _Make Public_,
+  - As a user, I want the option to register for an account, allowing me to save my details and see previous orders.
+  - As a user, I want to receive confirmation emails to confirm my registration.
+  - As a user, I want the ability to be able to log in and out, and be able to easily work out my current login status.
+  - As a user, I want to be able to recover my account information in the event that I forget it.
 
-Another blue button should appear to click: _Open Browser_.
+- #### Admin
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+  - As an admin, I want to be able to add products easily.
+  - As an admin, I want to be able to edit products easily to ensure the customer is being shown the most up to date information
+  - As an admin, I want to be able to delete discontinued products.
+  - As an admin, I want to be able to add and update the ingredients for products.
 
-A blue button should appear to click: _Make Public_,
+- #### Purchasing
 
-Another blue button should appear to click: _Open Browser_.
+  - As a user, I want to be able to add items to my cart, allowing me to store things until I'm ready to complete my purchase.
+  - As a user, I want to be able to view my cart so I can see the current running total of my potential purchases.
+  - As a user, I want the ability to update the quantity of the items in my cart easily.
+  - As a user, I want an easily viewable total to allow me to monitor my overall spend.
+  - As a user, I want to be able to complete the purchasing journey, without the need to register if I do not wish to.
+  - As a user, I want to receive confirmation of my order so I know my order was placed successfully.
+  - As a user, I want to be able to view my order history so I can review past purchases.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- #### Interaction
 
-To log into the Heroku toolbelt CLI:
+  - As a user, I want to be able to read store's blog posts.
+  - As a user, I want to be able to comment onto blog posts.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## Design
 
-------
+  #### **Colour scheme**
+  - Minimal palette consisting of shades of black, white and grey. Such palette was chosen to accompany colourful, bright product pictures.
+  #### **Typography**
+  - Roboto and Lexend fonts were used. These fonts are familiar to the user, professional and clean looking. 
+  #### **Imagery**
+  - Images were taken from [Unsplash](https://unsplash.com/photos/fGKWqJyAH4s), [Biscuiteers](https://www.biscuiteers.com/), [Honeywell bakes](https://honeywellbakes.com/)
 
-## Release History
+## Wireframes
+- Mobile Home page<br>
+![Products](media/wireframe-lessons-desktop.png)
+- Desktop Home page <br>
+![Detail](media/wireframe-lessons.png)
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Features
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### CRUD functionality
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+# Further development
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+# Technologies Used
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+# Testing
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## Testing User Stories from User Experience (UX) Section
+#### Navigation
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+  - As a user, I want to navigate round the site easily to locate the products I want. <br>
+  ![Main nav](media/main-nav.jpg)
+  - As a user, I want to view a list of all available products.<br>
+  Upon clicking Shop button in the main nav, an option of All Products is displayed.<br>
+  ![Shop](media/shop-display.jpg)
+  - As a user, I want to be able to view more details on a product.<br>
+  ![Detail](media/detail-1.jpg)
+  - As a user, I want to be able to refine my search with categories.<br>
+  Upon clicking Shop button in the main nav, all categories are displayed.<br>
+  - As a user, I want to be able to see all ingredients contained within the product, including any allergens. <br>
+  ![Ingredients](media/ingredients.jpg)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- #### Accounts
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+  - As a user, I want the option to register for an account, allowing me to save my details and see previous orders. <br>
+  <br> ![register](media/register.jpg)
+  - As a user, I want the ability to be able to log in and out, and be able to easily work out my current login status.
+  <br> ![register](media/logout.jpg)
+  - As a user, I want to be able to recover my account information in the event that I forget it.
+  <br> ![register](media/password-reset.jpg)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- #### Admin
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+  - As an admin, I want to be able to add products easily.
+  <br> ![register](media/admin-add.jpg)
+  - As an admin, I want to be able to edit products easily to ensure the customer is being shown the most up to date information
+  <br> ![register](media/admin-edit.jpg)
+  - As an admin, I want to be able to delete discontinued products.
+  <br> ![register](media/admin-delete.jpg)
+  - As an admin, I want to be able to add and update the ingredients for products.
+  <br> ![register](media/admin-ingredients.jpg)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+- #### Purchasing
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+  - As a user, I want to be able to add items to my cart, allowing me to store things until I'm ready to complete my purchase.
+  <br> ![register](media/bag-add.jpg)
+  - As a user, I want to be able to view my cart so I can see the current running total of my potential purchases.
+  <br> ![register](media/bag-view.jpg)
+  - As a user, I want the ability to update the quantity of the items in my cart easily.
+  <br> ![register](media/bag-edit-quantity.jpg)
+  - As a user, I want an easily viewable total to allow me to monitor my overall spend.
+  <br> ![register](media/bag-view-top.jpg)
+  - As a user, I want to be able to complete the purchasing journey, without the need to register if I do not wish to.
+  <br> Checkout functionality is equally simple for registered and unregistered users.
+  - As a user, I want to receive confirmation of my order so I know my order was placed successfully.
+  <br> ![register](media/order-confirmation.jpg)
+  - As a user, I want to be able to view my order history so I can review past purchases.
+  <br> ![register](media/order-history.jpg)
 
-------
+- #### Interaction
 
-## FAQ about the uptime script
+  - As a user, I want to be able to read store's blog posts.
+  <br> ![register](media/blog.jpg)
+  - As a user, I want to be able to comment onto blog posts.
+   <br> ![register](media/blog-comments.jpg)
+## To check:
+  - As a user, I want to receive confirmation emails to confirm my registration.
+  Real email functionality is not yet available, user will get a message to say it has been sent.
+### The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+ * HTML validator results
+ * CSS validator results![Base.css](media/base.css.jpg)[checkout.css](media/checkout.css.jpg)
 
-**Why have you added this script?**
+### PEP8 validator was used to check my code for PEP8 requirements
+* PEP8 validator was added to my workspace using command `pip3 install pycodestyle`
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Chrome developer tools 
+* Used to test responsiveness and functionality on various devices.
 
-**How will this affect me?**
+## Functionality testing
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+## Further Testing
+* Website was given to friends and family to test on various devices. Good responsiveness and functionality were reported.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+## Database Layout
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+## Bugs
 
-**Can I opt out?**
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+# Deployment
 
-**Anything more?**
+## Heroku
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
 
----
+## Forking the GitHub Repository
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/emilija-smitaite/review-a-restaurant)
+2. At the top of the Repository (not top of the page) just above the "Settings" button on the menu, locate the "Fork" button.
+3. You should now have a copy of the original repository in your GitHub account.
 
-Happy coding!
+## Making a Local Clone
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/emilija-smitaite/biscuiteers-biscuit-shop)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type "git clone" and then paste the URL you copied in Step 3.
+7. Press Enter. Your local clone will be created.
+
+# Credits
+
+## Code
+
+* All content was written by the developer. Any code that was not written by the developer was referenced in a document.
+
+## Acknowledgements
+
+Thank you to my mentor Spencer Barribal for guidance.
