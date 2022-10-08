@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'blog',
     'profiles',
     'storages',
+    'lessons',
 ]
 
 MIDDLEWARE = [
