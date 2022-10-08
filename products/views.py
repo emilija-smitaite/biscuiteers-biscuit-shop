@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
 
+
 def all_products(request):
     """ A view to show all products """
 
@@ -15,9 +16,7 @@ def all_products(request):
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories) #bit unclear
-
-
+            categories = Category.objects.filter(name__in=categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -35,7 +34,6 @@ def all_products(request):
     }
 
     return render(request, 'products/products.html', context)
-
 
 
 def product_detail(request, product_id):
