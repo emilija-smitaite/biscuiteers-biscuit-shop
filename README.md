@@ -71,7 +71,7 @@ The payment system is called Stripe, it is set up in a 'dummy' mode and will not
 Every aspect of CRUD functionality was tested by creating, updating, viewing and deleting products through admin.
 # Further development
 - For a further development a couple of features culd be implemented:
-- Classes section woould have booking functionality, allowing users to book certain dates for certain amount of people. <br>
+- Classes section would have booking functionality, allowing users to book certain dates for certain amount of people. <br>
 Calendar with availability and spaces left would be featured.
 - Blog section would benefit from the ability to contain images.
 
@@ -176,7 +176,13 @@ Calendar with availability and spaces left would be featured.
 * Used to test responsiveness and functionality on various devices.
 
 ## Functionality testing
-Thorough manual testing has been implemented, imitating every possible user interaction. None of it was able to break the code.
+Thorough user , imitating every possible user interaction. None of it was able to break the code.
+## Form validation
+All the forms were created with help of  Django Forms.
+Forms were testing by inputting data which would fail Django Forms validation.
+## Stripe
+- Stripe webhooks return status 200.
+![Webhook](media/webhook.jpg)
 ## Further Testing
 * Website was given to friends and family to test on various devices. Good responsiveness and functionality were reported.
 
@@ -185,12 +191,81 @@ Thorough manual testing has been implemented, imitating every possible user inte
 
 
 ## Bugs
-
-
+- On checkout app charfield was changed to CountryField with max_length of only 2. Previous orders had data which exceeded this limit therefore resulting in an error. Database had to be wiped out and reuploaded using fixtures.
 
 # Deployment
 
-## Heroku
+
+### Heroku
+
+In Heroku project can be built and deployed via a link to the Github Repo.
+
+1. Once you are logged in to Heroku, click the 'New' button and select 'Create new app'.
+2. Select a name for your app, select the closest region to you and click 'Create App'.
+3. Once the app has been created, navigate to the 'Add-ons' section and search for 'Heroku Postgres'.
+4. Select 'Heroku Postgres', choose 'Hobby Dev - Free' Plan Name and click 'Submit Order Form'.
+
+To use Postgres with Django, additional tools are required, and can be installed via the CLI in your chose IDE.
+
+1.  In your CLI type the command:  
+    `pip3 install dj_database_url`
+2.  Once completed, enter the following command into the CLI:  
+    `pip3 install psycopg2-binary`
+3.  At the top of the settings.py file in your main project folder, and the line:
+    ```
+    import dj_database_url
+    ```
+4.  Replace the code DATABASES section in settings with the code below.
+
+    ```
+    DATABASES = {
+        'default': dj_database_url.parse(<DATABASE_URL_GOES_HERE>)
+    }
+    ```
+
+    The Postgres Database URL can be found in the settings tab of your app in Heroku, under the Config Vars section.
+
+5. Repeat migration.
+    `python3 manage.py migrate`
+
+6.  Create a new superuser:  
+    `python3 manage.py createsuperuser`
+
+7.  Before we commit these changes, change `DATABASES` section in settings.py to prevent the Postgres Database URL ending up in version control.
+
+    ```
+    if 'DATABASE_URL' in os.environ:
+        DATABASES = {
+            'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+    }
+    ```
+
+8.  Gunicorn needs to be installed next, which acts as our web server:
+
+    `pip3 install gunicorn`
+
+9. Kept in the root directory `Procfile` to tell Heroku to create a web dyno. Insert the code:
+
+    `web: gunicorn PROJECT_NAME_HERE.wsgi:application`
+
+10. Disable collection of static files until we have set up AWS. This is achieved by navigating to the Settings tab in Heroku, selecting the Config_Vars section and entering `DISABLE_COLLECTSTATIC` in the `KEY` field, and `1` in the `VALUE`.
+
+    No static files present at deployed site at the moment.
+
+11. Add the Project URL to the `ALLOWED_HOSTS` section of settings.py
+    ```
+    ALLOWED_HOSTS = ['PROJECT_NAME_HERE.herokuapp.com', 'localhost', '127.0.0.1']
+    ```
+12. Commit and then push to Heroku.
+
+        `git push heroku main'
 
 
 ## Forking the GitHub Repository
@@ -213,7 +288,7 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 ## Code
 
 * All content was written by the developer. Any code that was not written by the developer was referenced in a document.
-
+Tutorials 
 ## Acknowledgements
 
 Thank you to my mentor Spencer Barribal for guidance.
