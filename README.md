@@ -1,10 +1,10 @@
 # The Biscuiteers Biscuit Shop
 [View the live project here.](https://biscuiteers-biscuit-shop.herokuapp.com/)
 
-Biscuiteers is an e-commerce site offering hand iced artisan biscuit gifts.
-Users are also benefit from a blog with comment functionality.
-The site is fully responsive and was built using the Django framework in Python.
-The payment system is called Stripe, it is set up in a 'dummy' mode and will not accept real card details.
+Biscuiteers is an e-commerce site offering hand iced artisan biscuit gifts. <br>
+Users also benefit from a blog with comment functionality. <br>
+The site is fully responsive and was built using the Django framework in Python. <br>
+The payment system is called Stripe, it is set up in a 'dummy' mode and will not accept real card details. <br>
 
 ![Mock up](media/mockup.png)
 
@@ -22,7 +22,6 @@ The payment system is called Stripe, it is set up in a 'dummy' mode and will not
 - #### Accounts
 
   - As a user, I want the option to register for an account, allowing me to save my details and see previous orders.
-  - As a user, I want to receive confirmation emails to confirm my registration.
   - As a user, I want the ability to be able to log in and out, and be able to easily work out my current login status.
   - As a user, I want to be able to recover my account information in the event that I forget it.
 
@@ -47,6 +46,7 @@ The payment system is called Stripe, it is set up in a 'dummy' mode and will not
 
   - As a user, I want to be able to read store's blog posts.
   - As a user, I want to be able to comment onto blog posts.
+  - As a user, I want to be able to see that my comment was succesfull.
 
 
 ## Design
@@ -171,6 +171,7 @@ Calendar with availability and spaces left would be featured.
 
 ### PEP8 validator was used to check my code for PEP8 requirements
 * PEP8 validator was added to my workspace using command `pip3 install pycodestyle`
+- There are linting errors remaining, nothing that affects the code.
 
 ### Chrome developer tools 
 * Used to test responsiveness and functionality on various devices.
@@ -186,15 +187,10 @@ Forms were testing by inputting data which would fail Django Forms validation.
 ## Further Testing
 * Website was given to friends and family to test on various devices. Good responsiveness and functionality were reported.
 
-## Database Layout
-
-
-
 ## Bugs
 - On checkout app charfield was changed to CountryField with max_length of only 2. Previous orders had data which exceeded this limit therefore resulting in an error. Database had to be wiped out and reuploaded using fixtures.
 
 # Deployment
-
 
 ### Heroku
 
@@ -268,6 +264,70 @@ To use Postgres with Django, additional tools are required, and can be installed
         `git push heroku main'
 
 
+#### AWS used to store static and media files
+-- Detailed setup in official docs: <br>
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html
+
+#### Connecting AWS to Django
+
+Now that AWS has been configured, connect Django to AWS.
+
+1. Firstly, install two packages. `Boto3` and `django-storages`:
+   ```
+   pip3 install boto3
+   pip3 install django-storages
+   ```
+2. Add `storages` to the `INSTALLED_APPS` section of settings.py.
+3. At the bottom of settings.py add the following code:
+   ```
+   if 'USE_AWS' in os.environ:
+       AWS_STORAGE_BUCKET_NAME = 'your-bucket-name-here'
+       AWS_S3_REGION_NAME = 'insert-your-region-here'
+       AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+       AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+   ```
+4. In Heroku, in the `Settings` tab, under `Config Vars`, we need to add the values from the CSV file we downloaded earlier.
+5. Add the key `AWS_ACCESS_KEY_ID` with the value that was generated in the CSV file. Add the key `AWS_SECRET_ACCESS_KEY`, and add the value that was generated in the CSV file. Add the key `USE_AWS` and set the value to True.
+6. Remove DISABLE_COLLECTSTAIC variable.
+7. Return to the settings.py file and add the following code to the `USE_AWS` if statement created earlier:
+   ```
+   AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+   ```
+8. In the root directory of your project, create a file called `custom_storages.py`. Inside this file add the following code:
+   ```
+   from django.conf import settings
+   from storages.backends.s3boto3 import S3Boto3Storage
+   ```
+9. Underneath the imports insert these two classes:
+
+    ```
+    class StaticStorage(S3Boto3Storage):
+        location = settings.STATICFILES_LOCATION
+
+
+    class MediaStorage(S3Boto3Storage):
+        location = settings.MEDIAFILES_LOCATION
+    ```
+
+10. In settings.py, underneath the bucket config settings but still inside the if statement, add these lines:
+    ```
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+    ```
+11. Next, add these two lines inside the same if statement:
+    ```
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    ```
+12. We can now save, add, commit and push the changes and files will b e added to the AWS S3 bucket. Inside the if statement add the code below which lets the browser know it can cache static files:
+    `AWS_S3_OBJECT_PARAMETERS = { 'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT', 'CacheControl': 'max-age=94608000', }`
+    14.In `S3` on `AWS`, go to your project bucket and click `Create folder`. Name the folder `media` and click `Save`.
+
+13. Inside the media folder, click `Upload`, `Add files`, and then select all media files used in your project.
+14. Under `Permissions`, select `Grant public-read access` and click `Upload`. You will need to acknowledge the displayed warning before you can do this.
+
 ## Forking the GitHub Repository
 By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
 1. Log in to GitHub and locate the [GitHub Repository](https://github.com/emilija-smitaite/review-a-restaurant)
@@ -286,9 +346,6 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 # Credits
 
 ## Code
-
 * All content was written by the developer. Any code that was not written by the developer was referenced in a document.
-Tutorials 
 ## Acknowledgements
-
-Thank you to my mentor Spencer Barribal for guidance.
+Thank you to my mentor Spencer Barriball for guidance.
