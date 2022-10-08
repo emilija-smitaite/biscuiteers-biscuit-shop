@@ -192,6 +192,17 @@ input[name='q']::placeholder {
 
 }
 
+.comments {
+    padding: 10px
+}
+
+.comment-form {
+    margin-top: 1.3em;
+}
+
+.sidebar-card {
+    box-shadow: 0 16px 48px #E3E7EB;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
