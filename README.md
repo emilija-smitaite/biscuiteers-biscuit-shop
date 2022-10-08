@@ -68,9 +68,12 @@ The payment system is called Stripe, it is set up in a 'dummy' mode and will not
 
 
 ### CRUD functionality
-
+Every aspect of CRUD functionality was tested by creating, updating, viewing and deleting products through admin.
 # Further development
-
+- For a further development a couple of features culd be implemented:
+- Classes section woould have booking functionality, allowing users to book certain dates for certain amount of people. <br>
+Calendar with availability and spaces left would be featured.
+- Blog section would benefit from the ability to contain images.
 
 # Technologies Used
 
@@ -96,20 +99,20 @@ The payment system is called Stripe, it is set up in a 'dummy' mode and will not
   - As a user, I want the option to register for an account, allowing me to save my details and see previous orders. <br>
   <br> ![register](media/register.jpg)
   - As a user, I want the ability to be able to log in and out, and be able to easily work out my current login status.
-  <br> ![register](media/logout.jpg)
+  <br> ![logout](media/logout.jpg)
   - As a user, I want to be able to recover my account information in the event that I forget it.
-  <br> ![register](media/password-reset.jpg)
+  <br> ![reset](media/password-reset.jpg)
 
 - #### Admin
 
   - As an admin, I want to be able to add products easily.
-  <br> ![register](media/admin-add.jpg)
+  <br> ![add](media/admin-add.jpg)
   - As an admin, I want to be able to edit products easily to ensure the customer is being shown the most up to date information
-  <br> ![register](media/admin-edit.jpg)
+  <br> ![edit](media/admin-edit.jpg)
   - As an admin, I want to be able to delete discontinued products.
-  <br> ![register](media/admin-delete.jpg)
+  <br> ![delete](media/admin-delete.jpg)
   - As an admin, I want to be able to add and update the ingredients for products.
-  <br> ![register](media/admin-ingredients.jpg)
+  <br> ![ingredients](media/admin-ingredients.jpg)
 
 - #### Purchasing
 
@@ -134,12 +137,37 @@ The payment system is called Stripe, it is set up in a 'dummy' mode and will not
   <br> ![register](media/blog.jpg)
   - As a user, I want to be able to comment onto blog posts.
    <br> ![register](media/blog-comments.jpg)
-## To check:
-  - As a user, I want to receive confirmation emails to confirm my registration.
-  Real email functionality is not yet available, user will get a message to say it has been sent.
+   - As a user, I want to be able to see that my comment was succesfull.
+   <br> ![register](media/comment-moderation.jpg)
+
 ### The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
  * HTML validator results
- * CSS validator results![Base.css](media/base.css.jpg)[checkout.css](media/checkout.css.jpg)
+ -Home <br>
+ ![home](media/html-home.jpg)
+ -All products <br>
+ ![All products](media/html-all-products.jpg)
+  -Product detail <br>
+ ![detail](media/html-product-detail.jpg)
+  -Bag <br>
+ ![Bag](media/html-bag.jpg)
+  -Checkout <br>
+ ![Checkout](media/html-checkout.jpg)
+  -Checkout-success <br>
+ ![Checkout-success](media/html-checkout-success.jpg)
+  -Blog <br>
+ ![Blog](media/html-blog.jpg)
+  -Blog-detail <br>
+ ![Blog detail](media/html-blog-detail.jpg)
+  -Classes <br>
+ ![Classes](media/html-classes.jpg)
+  -Login <br>
+ ![Login](media/html-login.jpg)
+  -Register <br>
+ ![Register](media/html-register.jpg)
+ 
+ * CSS validator results <br>
+ ![Base.css](media/base.css.jpg) <br>
+ ![checkout.css](media/checkout.css.jpg)
 
 ### PEP8 validator was used to check my code for PEP8 requirements
 * PEP8 validator was added to my workspace using command `pip3 install pycodestyle`
@@ -148,7 +176,7 @@ The payment system is called Stripe, it is set up in a 'dummy' mode and will not
 * Used to test responsiveness and functionality on various devices.
 
 ## Functionality testing
-
+Thorough manual testing has been implemented, imitating every possible user interaction. None of it was able to break the code.
 ## Further Testing
 * Website was given to friends and family to test on various devices. Good responsiveness and functionality were reported.
 
