@@ -183,6 +183,15 @@ input[name='q']::placeholder {
     padding-top: 10px;
 }
 
+/*-------------------------Home page header */
+
+.home-header {
+    color: white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
